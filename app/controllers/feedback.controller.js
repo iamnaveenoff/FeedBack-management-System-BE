@@ -1,21 +1,19 @@
 const db = require("../models");
-const Schedule = db.schedule;
+const Feedback = db.feedback;
 const Parking = db.parking;
 const Op = db.Sequelize.Op;
 const  moment = require('moment');
   
 
-exports.saveSchedule = (req, res) => {
-    Schedule.create({
-        username: req.body.username,
-        email: req.body.email,
-        createdBy: req.body.createdBy,
-        scheduledDate: req.body.scheduledDate,
-        phoneNumber: req.body.phoneNumber,
+exports.saveFeedback = (req, res) => {
+    Feedback.create({
+        feedback: req.body.feedback,
+        name: req.body.name,
+        category: req.body.category,
         remarks: req.body.remarks,
-        updatedBy: req.body.updatedBy
-      }).then(scheduledDate => {
-        res.send({ message: "Schedule Saved successfully!" });
+        status: req.body.status
+      }).then(saveFeedback => {
+        res.send({ message: "Feedback Saved successfully!" });
       }) .catch(err => {
         res.status(500).send({ message: err.message });
       });

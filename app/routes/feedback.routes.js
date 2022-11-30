@@ -1,4 +1,4 @@
-const controller = require("../controllers/schedule.controller");
+const controller = require("../controllers/feedback.controller");
 const { authJwt } = require("../middleware");
 module.exports = function(app) {
     app.use(function(req, res, next) {
@@ -10,9 +10,9 @@ module.exports = function(app) {
       });
 
       app.post(
-        "/api/saveSchedule",
+        "/api/saveFeedback",
         // [authJwt.verifyToken],
-        controller.saveSchedule
+        controller.saveFeedback
       );
 
       app.get(

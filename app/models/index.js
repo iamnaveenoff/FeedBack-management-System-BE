@@ -24,12 +24,10 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.sequelize = sequelize;
-db.sequelize = sequelize;
 
 db.user = require("../models/user.model.js")(sequelize, Sequelize);
 db.role = require("../models/role.model.js")(sequelize, Sequelize);
-db.schedule = require("../models/schedule.model.js")(sequelize, Sequelize);
-db.parking = require("../models/parking.model.js")(sequelize, Sequelize);
+db.feedback = require("./feedback.model.js")(sequelize, Sequelize);
 
 db.role.belongsToMany(db.user, {
   through: "user_roles",
@@ -42,16 +40,6 @@ db.user.belongsToMany(db.role, {
   otherKey: "roleId"
 });
 
-/* db.schedule.belongsToMany(db.user, {
-  through: "schedules_chart",
-  foreignKey: "userId",
-  otherKey: "scheduleId"
-});
-db.user.belongsToMany(db.schedule, {
-  through: "schedules_chart",
-  foreignKey: "userId",
-  otherKey: "scheduleId"
-}); */
 
 db.ROLES = ["user", "admin", "moderator"];
 
